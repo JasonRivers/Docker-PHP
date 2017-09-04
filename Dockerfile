@@ -1,4 +1,4 @@
-FROM php:7-apache
+FROM php:5-apache
 
 RUN	apt-get update					&&	\
 	apt-get --assume-yes install				\
