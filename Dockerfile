@@ -11,7 +11,7 @@ RUN	apt-get update					&&	\
 	rm -Rf /var/lib/apt/lists/*
 
 RUN	docker-php-ext-configure gd --with-freetype-dir=/usr/include --with-jpeg-dir=/usr/include/	&&	\
-	docker-php-ext-install -j$(nproc) iconv mcrypt gd mysqli pdo pdo_mysql
+	docker-php-ext-install -j$(nproc) iconv mcrypt gd mysqli pdo pdo_mysql sockets
 ADD apache2.proxylog.patch /
 
 RUN patch /etc/apache2/apache.conf /apache2.proxylog.patch && rm /apache2.proxylog.patch
