@@ -1,7 +1,7 @@
 207a208
 > LogFormat "%{X-Forwarded-For}i %l %u %t \"%r\" %>s %O \"%{Referer}i\" \"%{User-Agent}i\"" proxy
-210a212,215
-> 
-> SetEnvIf X-Forwarded-For "^.*\..*\..*\..*" forwarded
-> CustomLog "logs/access_log" combined env=!forwarded
-> CustomLog "logs/access_log" proxy env=forwarded
+#210a212,215
+#> 
+#> SetEnvIf X-Forwarded-For "^.*\..*\..*\..*" forwarded
+#> CustomLog "logs/access_log" combined env=!forwarded
+#> CustomLog "logs/access_log" proxy env=forwarded
