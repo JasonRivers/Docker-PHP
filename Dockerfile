@@ -15,8 +15,12 @@ RUN	pecl install mcrypt-1.0.1		&& \
 	docker-php-ext-install -j$(nproc) iconv gd mysqli pdo pdo_mysql sockets						&&	\
 	docker-php-ext-enable mcrypt
 ADD apache2.proxylog.patch /
+ADD 000-default.conf /etc/apache2/sites-available/
 
-RUN patch /etc/apache2/apache.conf /apache2.proxylog.patch && rm /apache2.proxylog.patch
+RUN patch /etc/apache2/apache.conf /apache2.proxylog.patch && rm /apache2.proxylog.patch && \
+	a2enmod rewrite				&& \
+    a2enmod headers
+
 
 VOLUME "/var/www/html"
 
