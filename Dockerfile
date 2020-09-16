@@ -10,8 +10,8 @@ RUN	apt-get update					&&	\
 	apt-get clean					&&	\
 	rm -Rf /var/lib/apt/lists/*
 
-RUN	pecl install mcrypt-1.0.1		&& \
-	docker-php-ext-configure gd --with-freetype-dir=/usr/include --with-jpeg-dir=/usr/include/	&&	\
+RUN	pecl install mcrypt-1.0.3		&& \
+	docker-php-ext-configure gd --with-freetype --with-jpeg	&&	\
 	docker-php-ext-install -j$(nproc) iconv gd mysqli pdo pdo_mysql sockets						&&	\
 	docker-php-ext-enable mcrypt
 ADD apache2.proxylog.patch /
